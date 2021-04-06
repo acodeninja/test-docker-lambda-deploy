@@ -15,7 +15,7 @@ resource "null_resource" "build-image" {
   }
 
   provisioner "local-exec" {
-    command     = "aws ecr get-login-password | docker login --username AWS --password-stdin ${local.ecr_hostname}"
+    command = "aws ecr get-login-password | docker login --username AWS --password-stdin ${local.ecr_hostname}"
   }
 
   provisioner "local-exec" {
@@ -24,7 +24,7 @@ resource "null_resource" "build-image" {
   }
 
   provisioner "local-exec" {
-    command     = "docker push ${local.remote_image_name}"
+    command = "docker push ${local.remote_image_name}"
   }
 
   depends_on = [
